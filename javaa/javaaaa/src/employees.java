@@ -7,6 +7,7 @@ public class employees {
     String department;
     int salary;
     int n;
+    int sum = 0;
     Scanner sc = new Scanner(System.in);
 
     public void read() {
@@ -36,10 +37,16 @@ public class employees {
         System.out.print("Enter the number of employees: ");
         instance.n = instance.sc.nextInt();
         employees[] e = new employees[instance.n];
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < instance.n; i++) {
             e[i] = new employees();
             e[i].read();
         }
         // calculate the sum of the salary of sales department
+        for (int j = 0; j < instance.n; j++) {
+            if (e[j].department.equals("Sales")) {
+                instance.sum = instance.sum + e[j].salary;
+            }
+        }
+        System.out.println("The sum of salary of all the employees in the sales department is:" + instance.sum);
     }
 }
