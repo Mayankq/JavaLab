@@ -8,6 +8,7 @@ public class employees {
     int salary;
     int n;
     int sum = 0;
+    int maxin;
     Scanner sc = new Scanner(System.in);
 
     public void read() {
@@ -32,6 +33,7 @@ public class employees {
     }
 
     public static void main(String[] args) {
+        int max = 0;
         employees instance = new employees();
         System.out.print("\033[H\033[2J");
         System.out.print("Enter the number of employees: ");
@@ -48,5 +50,21 @@ public class employees {
             }
         }
         System.out.println("The sum of salary of all the employees in the sales department is:" + instance.sum);
+
+        // Retrieving the details of highest paid manager in the purchase department
+        for (int k = 0; k < instance.n; k++) {
+            if ((e[k].department.equals("Purchase")) && (e[k].designation.equals("Manager"))) {
+                if (e[k].salary > max) {
+                    max = e[k].salary;
+                    instance.maxin = k;
+                }
+            }
+        }
+        System.out.println("\nDetails of highest paid manager in the purchase department:\n");
+        System.out.println("Name : " + e[instance.maxin].name);
+        System.out.println("Department : " + e[instance.maxin].department);
+        System.out.println("Designation : " + e[instance.maxin].designation);
+        System.out.println("Id : " + e[instance.maxin].id);
+        System.out.println("Salary : " + e[instance.maxin].salary);
     }
 }
